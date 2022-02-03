@@ -41,9 +41,8 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
+let city = "San Tan Valley";
 let apiKey = "06dbfbcd1325d3e522edc830767aa8d4";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Phoenix&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
-
-console.log(apiUrl);
