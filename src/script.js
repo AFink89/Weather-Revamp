@@ -30,8 +30,10 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
+  celsiusTemperature = response.data.main.temp;
+
   let temperatureElement = document.querySelector(`#temperature`);
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   let cityElement = document.querySelector(`#city`);
   cityElement.innerHTML = response.data.name;
   let descriptionElement = document.querySelector(`#description`);
@@ -64,3 +66,33 @@ search("Phoenix");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+//Unit conversion
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  //Remove active class of celsius link
+  celsiusLink.classList.remove("active");
+  //Add active class to farhenheit link
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (9 * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  //Add active class to celsius link
+  celsiusLink.classList.add("active");
+  //Remove active class of fahrenheit link
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
