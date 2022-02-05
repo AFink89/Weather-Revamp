@@ -1,3 +1,4 @@
+//To display date & day of the week
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -18,6 +19,7 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+//To display temperature of searched city, display elements
 function displayTemperature(response) {
   let dateElement = document.querySelector(`#date`);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
@@ -45,8 +47,20 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-let city = "San Tan Valley";
-let apiKey = "06dbfbcd1325d3e522edc830767aa8d4";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+//Search form for city
+function search(city) {
+  let apiKey = "06dbfbcd1325d3e522edc830767aa8d4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Phoenix");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
