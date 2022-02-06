@@ -6,6 +6,14 @@
   background-image: linear-gradient(#1e1974, #06f6bb, #09b8f5);
 }
 
+.video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 body {
   font-family: cursive;
 }
