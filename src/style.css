@@ -1,21 +1,27 @@
 .container {
   max-width: 600px;
   margin-top: 10px;
-  border: rgb(244, 244, 248);
+  border: 3px rgb(244, 244, 248);
   border-radius: 15px;
-  background-image: linear-gradient(#1e1974, #06f6bb, #09b8f5);
-}
-
-.video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  opacity: 0.9;
 }
 
 body {
   font-family: cursive;
+}
+
+.bg-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 h1 {
@@ -55,7 +61,7 @@ li:first-letter {
 }
 
 .overview {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .float-left {
   float: left;
@@ -86,7 +92,7 @@ img {
 }
 
 .weather-temperature .active {
-  color: black;
+  color: white;
   cursor: default;
 }
 
@@ -100,7 +106,11 @@ img {
   margin-bottom: 20px;
 }
 
-.footer {
+footer {
+  display: block;
   font-size: 15px;
   text-align: center;
+  background: white;
+  opacity: 0.8;
+  margin: 0%;
 }
