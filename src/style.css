@@ -59,6 +59,7 @@ li:first-letter {
 }
 .float-left {
   float: left;
+  top: 45px;
 }
 
 img {

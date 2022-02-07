@@ -39,10 +39,8 @@ function displayTemperature(response) {
   let descriptionElement = document.querySelector(`#description`);
   descriptionElement.innerHTML = response.data.weather[0].description;
 
-  let sunriseElement = document.querySelector(`#sunrise`);
-  sunriseElement.innerHTML = response.data.sys.sunrise;
-  let sunsetElement = document.querySelector(`#sunset`);
-  sunsetElement.innerHTML = response.data.sys.sunset;
+  let feelsLikeElement = document.querySelector(`#feels-like`);
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   let humidityElement = document.querySelector(`#humidity`);
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector(`#wind`);
@@ -53,6 +51,7 @@ function displayTemperature(response) {
 function search(city) {
   let apiKey = "06dbfbcd1325d3e522edc830767aa8d4";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
   axios.get(apiUrl).then(displayTemperature);
 }
 
