@@ -74,8 +74,9 @@ img {
 
 .weather-temperature img {
   margin-right: 5px;
-  height: 64px;
-  width: 64px;
+  height: 100px;
+  width: 100px;
+  top: -34px;
 }
 
 .weather-temperature strong {
@@ -104,6 +105,25 @@ img {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+  color: white;
+}
+
+.weather-temperature-min {
+  opacity: 0.5;
+}
+
+.weather-forecast {
+  font-size: 13px;
 }
 
 footer {
