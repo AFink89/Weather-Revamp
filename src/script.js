@@ -45,7 +45,7 @@ function displayForecast() {
                 </div>
               </div>
             </div>`;
-  forecastHTML = forecastHTML + `</div>`;
+  forecastHTML = forecastHTML`</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
@@ -103,7 +103,7 @@ function displayFahrenheitTemperature(event) {
   celsiusLink.classList.remove("active");
   //Add active class to farhenheit link
   fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (9 * 9) / 5 + 32;
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
