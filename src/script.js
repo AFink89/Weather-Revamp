@@ -23,30 +23,31 @@ function formatDate(timestamp) {
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
+  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
   let forecastHTML = `<div class="row">`;
-  forecastHTML =
-    forecastHTML +
-    `<div class="col-2">
-                <div class="weather-forecast-date">
-                ${formatDay(forecastDay.dt)}</div>
-                <img
-                  src="https://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  alt=""
-                  width="42"
-                />
-                <div class="weather-forecast-temperature">
-                  <span class="weather-forecast-temperature-max">
-                    18&deg;
-                  </span>
-                  |
-                  <span class="weather-temperature-min"> 12&deg; </span>
-                </div>
-              </div>
-            </div>`;
-  forecastHTML = forecastHTML`</div>`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 18° </span>
+          <span class="weather-forecast-temperature-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
 }
 
 //To display temperature of searched city, display elements
@@ -81,7 +82,6 @@ function displayTemperature(response) {
 function search(city) {
   let apiKey = "06dbfbcd1325d3e522edc830767aa8d4";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayTemperature);
 }
 
@@ -90,8 +90,6 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
-
-search("Phoenix");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -125,3 +123,6 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("Phoenix");
+displayForecast();
