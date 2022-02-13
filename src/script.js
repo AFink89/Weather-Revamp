@@ -43,7 +43,7 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
@@ -130,9 +130,8 @@ form.addEventListener("submit", handleSubmit);
 //Unit conversion
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  //Remove active class of celsius link
   celsiusLink.classList.remove("active");
-  //Add active class to farhenheit link
+
   fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperature");
@@ -141,9 +140,7 @@ function displayFahrenheitTemperature(event) {
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-  //Add active class to celsius link
   celsiusLink.classList.add("active");
-  //Remove active class of fahrenheit link
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
